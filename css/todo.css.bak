@@ -1,0 +1,13 @@
+*{
+	margin:0px;
+	padding:0px;
+	list-style-type:none;
+}
+.base{
+	margin-left:10px;
+}
+.done-true{
+	text-decoration : line-through;
+	color:grey;
+	
+}  

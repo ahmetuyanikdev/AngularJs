@@ -1,0 +1,58 @@
+<!doctype html>
+<html ng-app>
+<head>
+	<script src="https://code.angularjs.org/1.0.0rc3/angular-1.0.0rc3.min.js"></script>
+	<script type="text/javascript" src="js/T4Js.js"></script>
+	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	<style>
+		*{
+			list-style-type:none;
+		}
+		.editable-true{
+			
+		}
+		.editable-false{	
+			
+		}	
+	</style>
+
+</head>
+<body>
+<div ng-controller="Controller" class="base">
+
+<ul>
+	<li ng-repeat="p in products">
+		<label for="editCheckbox">Edit</label>
+		<input id="editCheckbox" type="checkbox" ng-model="p.edit"></input>
+		<label for="sellCheckBox">Sold</label>
+		<input type="checkbox" id="sellCheckBox" ng-model="p.sold"></input>
+		<input type="text"  value="{{p.Name}}" ng-readonly="!p.edit" class="editable-{{p.edit}}"></input>
+	</li>
+<ul>
+<hr/>
+<div>
+<h4>Number Of Products :{{getNofP()}}</h4>
+
+<label>Sold:</label>
+<input type="checkbox" ng-model="newProductSoldStatus"></input>
+<label>Name:</label>
+<input type="text" ng-model="newProductName"></input>
+<label>Price :</label>
+<input type="text" ng-model="newProductPrice"></input>
+<button ng-click="">Add new Product</button>
+</div>
+</div>
+</body>
+<script>
+	$(document).ready(function(){
+		/*
+		$('.editable-false').attr('readonly', true);
+		
+		$('.editable-true').attr('readonly', false);
+		*/
+		
+	}
+	);
+</script>
+
+</html>

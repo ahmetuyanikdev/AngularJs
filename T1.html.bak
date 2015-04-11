@@ -1,0 +1,87 @@
+<html>
+<head>
+<title>Angular JS Filters</title>
+</head>
+<body>
+<h2>AngularJS Sample Application</h2>
+
+<div ng-app="" ng-controller="studentController">
+	<table border="0">
+	<tr><td>Enter first name:</td><td><input type="text" ngmodel="student.firstName"></td></tr>
+	<tr><td>Enter last name: </td><td><input type="text" ngmodel="student.lastName"></td></tr>
+	<tr><td>Enter fees: </td><td><input type="text" ngmodel="student.fees"></td></tr>
+	<tr><td>Enter subject: </td><td><input type="text" ngmodel="subjectName"></td></tr>
+	</table>
+<br/>
+<table border="0">
+	<tr>
+		<td>Name in Upper Case: </td><td>{{student.fullName() |
+	uppercase}}</td></tr>
+	<tr><td>Name in Lower Case: </td><td>{{student.fullName() |
+	lowercase}}</td></tr>
+	<tr>
+		<td>fees: </td>
+		<td>{{student.fees | currency}}</td>
+	</tr>
+	<tr>
+		<td>Subject:</td>
+		<td>
+		<ul>
+			 <li ng-repeat="subject in student.subjects | filter: subjectName
+			|orderBy:'marks'">
+			 {{ subject.name + ', marks:' + subject.marks }}
+		 </li>
+		</ul>
+		</td>
+	</tr>
+</table>
+<hr/>
+<input name="firstname" type="text" ng-model="firstName" required>
+<input name="lastname" type="text" ng-model="lastName" required>
+<input name="email" type="email" ng-model="email" required>
+<button ng-click="reset()">Reset</button>
+<script>
+ function studentController($scope) {
+ $scope.reset = function(){
+ $scope.firstName = "Mahesh";
+ $scope.lastName = "Parashar";
+ $scope.email = "MaheshParashar@tutorialspoint.com";
+ }
+ $scope.reset();
+}
+</script>
+
+<hr/>
+<input type="checkbox"  ng-model="showHide1">Show Button
+<button ng-show="showHide1"  >Click Me!</button>
+<br/>
+<input type="checkbox" ng-model="enableDisableButton">Disable Button
+<button ng-disabled="enableDisableButton">Click Me!</button>
+<hr/>
+<p>Total click: {{ clickCounter }}</p></td>
+<button ng-click="clickCounter = clickCounter + 1">Click Me!</button>
+
+</div>
+<script>
+function studentController($scope) {
+ $scope.student = {
+ firstName: "Mahesh",
+ lastName: "Parashar",
+ fees:500,
+ subjects:[
+ {name:'Physics',marks:70},
+ {name:'Chemistry',marks:80},
+ {name:'Math',marks:65}
+ ],
+ fullName: function() {
+ var studentObject;
+ studentObject = $scope.student;
+ return studentObject.firstName + " " + studentObject.lastName;
+ }
+ };
+}
+</script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js">
+</script>
+</body>
+</html>						
